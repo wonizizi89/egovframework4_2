@@ -23,7 +23,7 @@ public class HtmlEscapingObjectMapperFactory implements FactoryBean<ObjectMapper
         objectMapper.getFactory().setCharacterEscapes(new HTMLCharacterEscapes());
 //        objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
     }
-
+//
     @Override
     public ObjectMapper getObject()  {
         return objectMapper;
