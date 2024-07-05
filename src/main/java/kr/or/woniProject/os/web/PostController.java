@@ -16,22 +16,24 @@ public class PostController {
 
 	@Autowired
 	private PostService postService;
-	@GetMapping("/")
+	@PostMapping("/")
 	public String view(@RequestParam Map<String,Object> paraMaps, Model model){
-		List<Map<String,Object> > data = postService.selectPost(paraMaps);
-		model.addAttribute("postList",data);
+//		List<Map<String,Object> > data = postService.selectPost(paraMaps);
+//		model.addAttribute("postList",data);
 		return "os/listView" ;
 	}
-	// modelAndView는 옛방식으로 현재는 model을 선호한다.
+//	 modelAndView는 옛방식으로 현재는 model을 선호한다.
 	@GetMapping("/selectPost")
-	public String selectPost(@RequestParam Map<String,Object> paraMaps, Model model){
+	public String selectPostList(@RequestParam Map<String,Object> paraMaps, Model model){
 		List<Map<String,Object> > data = postService.selectPost(paraMaps);
 		model.addAttribute("postList",data);
 		return "os/listView" ;
 	}
 
+
+
 	@PostMapping("/search")
-	public String searchPost (@RequestParam( name ="searchType") String searchType,
+	public String searchPostByFormData (@RequestParam( name ="searchType") String searchType,
 							  @RequestParam( name ="searchWord") String searchWord, Model model){
 		Map<String,Object> paraMaps = new HashMap<>();
 		paraMaps.put("searchType",searchType);
@@ -42,14 +44,31 @@ public class PostController {
 		return "os/listView" ;
 	}
 
-	@PostMapping(value = "/detailView", consumes = "application/json", produces = "application/json")
+
+	@PostMapping(value = "/detailView")
 	@ResponseBody
-	public Map<String,Object> detailView(@RequestBody Map<String,Object> paraMaps){
+	public Map<String,Object> selectDetailView(@RequestBody Map<String,Object> paraMaps){
 
 		Map<String,Object> data = postService.detailView(paraMaps);
 		Map<String,Object> result = new HashMap<>();
 		result.put("data",data);
 		return result ;
 	}
+
+	 @PostMapping(value = "/postSave")
+	 @ResponseBody
+	 public Map<String, Object> insertPost(@RequestBody Map<String,Object> paraMaps){
+		Map<String, Object> result = new HashMap<>();
+		int data =postService.insertPost(paraMaps);
+		if(data>0){
+			result.put("message","등록되었습니다.");
+		}else{
+			result.put("message","등록되지 않았습니다. 다시 시도해주세요");
+		}
+		 return result;
+	 }
+
+
+
 
 }

@@ -33,4 +33,9 @@ public class PostServiceImpl  extends EgovAbstractServiceImpl implements PostSer
 	public Map<String, Object> detailView(Map<String, Object> paraMaps) {
 		return postDao.detailView(paraMaps);
 	}
+
+	@Override
+	public int insertPost(Map<String, Object> paraMaps) {
+		return postDao.insertPost(paraMaps);
+	}
 }

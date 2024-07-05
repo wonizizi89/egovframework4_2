@@ -17,23 +17,9 @@
          sessionStorage.setItem("contextPath", '${contextPath}');
     </script>
 
-<title>Insert title here</title>
+<title>post save</title>
 
 <style>
-
-.tbl_type,.tbl_type th,.tbl_type td{border:0}
-.tbl_type a{color:#383838;text-decoration:none}
-.tbl_type{width:100%;border-bottom:1px solid #999;color:#666;font-size:12px;table-layout:fixed}
-.tbl_type caption,.tbl_type .frm label{display:none}
-.tbl_type th{padding:5px 0 4px;border-top:solid 1px #999;border-bottom:solid 1px #b2b2b2;background-color:#f1f1f4;color:#333;font-weight:bold;line-height:18px;vertical-align:top}
-.tbl_type td{padding:8px 0 5px;border-bottom:solid 1px #d2d2d2;text-align:center}
-.tbl_type .frm{padding:0;text-align:center}
-.tbl_type .frm input{margin:0}
-.tbl_type .num,.tbl_type .date,.tbl_type .hit{padding:0;font-family:Tahoma;font-size:11px;line-height:normal}
-.tbl_type .title{text-align:left}
-.tbl_type .title .pic,.tbl_type .title .new{margin:0 0 2px;vertical-align:middle}
-.tbl_type tr.reply .title a{padding-left:12px;background:url(img/ic_reply.gif) 0 1px no-repeat}
-.tbl_type tr.reply td a.comment{padding:0;background:none;color:#f00;font-size:12px;font-weight:bold}
 
 @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
 #feedback-page{
@@ -191,63 +177,6 @@ input:focus, textarea:focus {
 </style>
 </head>
 <body>
-
-
-    <img src="${contextPath}/images/egovframework/cmmn/apeach2.png" alt="카카오톡" class="tit_icon">
-
-    <div style ="display: flex;">
-        <form action="/os/search" method="post" id="searchForm" enctype="application/x-www-form-urlencoded">
-            <select name="searchType">
-                <option value="">검색구분</option>
-                <option value="boardTitle">제목</option>
-                <option value="userName">글쓴이</option>
-            </select>
-            <input type="text" name="searchWord" id="searchWord" placeholder="입력해주세요." />
-            <button type="submit" id="search_btn">검색</button>
-        </form>
-        <button type="button" class="btn btn-warning" id = "postSave_poppup_btn" style="margin: 0 10px 10px 10px;">등록</button>
-    </div>
-
-    <div id = "list-table">
-        <table cellspacing="0" border="1" summary="게시판의 글제목 리스트" class="tbl_type">
-            <caption>게시판 리스트</caption>
-                <colgroup>
-                    <col width="30"><col width="80"><col>
-                    <col width="115"><col width="85"><col width="60">
-                </colgroup>
-                <thead>
-                    <tr>
-                    <th scope="col">No</th>
-                    <th scope="col">제목</th>
-                    <th scope="col">글쓴이</th>
-                    <th scope="col">날짜</th>
-                    <th scope="col">조회수</th>
-                    </tr>
-                </thead>
-                <tbody id = "testTbody">
-                     <c:forEach var = "post" items = "${postList}">
-                        <tr>
-                            <td class="num">${post.boardNo}</td>
-                            <td class="title" >${post.boardTitle}</td>
-                            <td class="username" >${post.userName}</td>
-                            <td class="date">${post.boardDate}</td>
-                            <td class="hit">1234</td>
-                        </tr>
-                     </c:forEach>
-                </tbody>
-        </table>
-    </div>
-        <div>
-            <br>
-            <br>
-
-
-            <div class="card" id = "cardBox" style="width: 18rem;display:none">
-              <img src="${contextPath}/images/egovframework/cmmn/kakao.png" alt="카카오톡" class="tit_icon">
-              <div class="card-body" id = "cardBody"></div>
-            </div>
-
-        </div>
 
       <div id="postBox">
         <div id="form-div">

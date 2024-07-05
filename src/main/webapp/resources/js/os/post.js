@@ -24,9 +24,38 @@
         setUIEvent: function(){
             $("#search_btn1").on("click",function(){
                $("#cardBox").css("display","block");
-            })
+            });
 
+
+           $("#testTbody").on("click",function(e){
+               var selectedRow = e.target.closest('tr');
+               var boardNo = Number( selectedRow.querySelector('.num').textContent);
+               $post.event.detailView(boardNo);
+            });
+
+           $("#postSave_poppup_btn").on("click",function(){
+             $("#postBox").css("display","block");
+            });
+
+           $("#postSave_btn").on("click",function(){
+                var boardTitle = $('#boardTitle').val();
+                var boardContent = $('#boardContent').val();
+                var username = $('#username').val();
+                var param = {
+                             boardTitle : boardTitle,
+                             boardContent : boardContent,
+                             username : username,
+                }
+               console.log("contextPath",contextPath);
+               ajax(true,contextPath+'os/postSave',param,function(data){
+                    var data = data.message;
+                    alert(data);
+                    $post.event.closePopup();
+                    location.reload();
+               });
+           });
         },
+
 
 
         detailView: function(boardNo){
@@ -44,6 +73,13 @@
                 <a href="#" class="btn btn-primary">이름 : ${data.userName}</a>
             `);
           });
+        },
+
+        closePopup: function(){
+              $('#boardTitle').val('');
+              $('#boardContent').val('');
+              $('#username').val('');
+              $("#postBox").css("display","none");
         },
 
     };

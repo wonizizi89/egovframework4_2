@@ -15,6 +15,7 @@
     </context:component-scan>
 
     <mvc:annotation-driven/>
+<!--    aop 설정을 통한 자동적인 proxy객첵를 생성하기 위한 설정-->
     <aop:aspectj-autoproxy />
 
 
@@ -71,8 +72,8 @@
     <mvc:resources mapping="/resources/**" location="/resources/"/>
     <mvc:resources mapping="/**" location="/static/"/>
 
-    <bean id="htmlEscapeTag"
-          class="kr.or.woniProject.cmmn.sys.service.HtmlEscapingObjectMapperFactory" />
+    <!--4. MessageConverter에 ObjectMapper 설정-->
+    <bean id ="htmlEscapeTag" class ="kr.or.woniProject.cmmn.sys.service.HtmlEscapingObjectMappingFactory"/>
     <mvc:annotation-driven>
         <mvc:message-converters>
             <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">

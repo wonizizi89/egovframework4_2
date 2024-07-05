@@ -16,4 +16,7 @@ public class PostDao extends CmmnAbstractMapper {
 	public Map<String, Object> detailView (Map<String,Object> paramap){
 		return selectOne("os.Post.detailView",paramap);
 	}
+
+    public int insertPost(Map<String, Object> paraMaps) { return insert("os.Post.insertPost",paraMaps);
+    }
 }

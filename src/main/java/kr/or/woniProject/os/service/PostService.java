@@ -9,4 +9,5 @@ public interface PostService {
 	List<Map<String, Object>> selectPost (Map<String,Object> paraMaps);
 	Map<String, Object> detailView (Map<String,Object> paraMaps);
 
+    int insertPost(Map<String, Object> paraMaps);
 }
